@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.2.26/angular.min.js"></script>
+	<script>
+		/* Sample: http://jsfiddle.net/TahmidTanzim/N9Vqk/ */
+		function groupController($scope,$http) {
+			$scope.groups = [ "Helpdesk", "Tech support", "Customer support", "Backoffice" ];
+			$scope.agents = [
+				{ name: "Péter", groups: [ 3 ] },
+				{ name: "Gábor", groups: [ 1 ] },
+				{ name: "András", groups: [] },
+				{ name: "Szilvia", groups: [ 0, 2 ] },
+				{ name: "Ancsa", groups: [] },
+				{ name: "Nóra", groups: [] },
+				{ name: "Eszter", groups: [] }
+			];
+			$scope.memberof = function( agname, grname) {
+				console.log("aa: " + agname);
+				console.log("bb: " + grname);
+				for( g = 0; g < $scope.groups.length; g++ ) {			// check all groups to find the actual
+					//if( grname == $scope.groups[g]) {					// we have a match, g is the group index
+					//	for( i = 0; i < arec.groups.length; i++ ) {			// check member group list
+					//		if( g == arec.groups[i]) {						// we have a match, the agent is member of the group
+					//			return true;
+					//		}
+					//	}
+					//}
+				}
+				return false;
+			}			
+			console.log($scope.groups);	
+			console.log($scope.agents);	
+		}
+	</script>
+</head>
+
+<body>
+	<h1>Group - member association test</h1>
+	<div ng-app="" ng-controller="groupController"> 
+
+	<div>
+		<select name="groupsel" style="width:100px;" data-ng-model="actGroup">
+			<option ng-repeat="g in groups" value="{{ g }}">{{ g }} selected</option>
+		</select>	
+	</div>
+	<br/>Sel: {{ actGroup }}<br/>
+	<div>
+		<select name="memberlist" size=10 style="width:100px;" >
+			<option data-ng-repeat="m in agents | filter:isMember()" value="{{ m.name }}">{{ m.name }}</option>
+		</select>	
+	</div>
+	
+	</div>
+</body>
+</html>

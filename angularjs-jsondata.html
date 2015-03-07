@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.2.26/angular.min.js"></script>
+	<script src="angularjs-jsondata.js"></script>
+	<link href="angularjs-jsondata.css" rel="stylesheet" type="text/css">
+</head>
+
+<body>
+	<h1>JSON data fetch</h1>
+	<div ng-app="" ng-controller="personController">
+		<div ng-hide="users">Loading ...</div>
+		<div ng-show="users">
+		<p>Date: {{users.date}}</p>
+			<form>
+			  <input ng-model="searchText" placeholder="Search names">
+			</form>
+			<h2>Displaying as a list</h2>
+			<ul>
+				<li ng-repeat="user in users.names | filter: { name: searchText } | orderBy: ['gender', 'name'] | limitTo: 10">
+					<span>{{user.name | uppercase}} ({{user.gender}}): {{user.address}}</span>
+				</li>
+			</ul>
+			<h2>Displaying as a table</h2>
+			<table>
+				<tr ng-repeat="user in users.names | filter: { name: searchText } | orderBy: ['gender', 'name'] | limitTo: 10">
+					<td>{{ user.name }}</td>
+					<td>{{ user.gender }}</td>
+					<td>{{ user.address }}</td>
+				</tr>
+			</table>
+		</div>
+	</div>
+</body>
+</html>

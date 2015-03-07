@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.2.26/angular.min.js"></script>
+</head>
+
+<body>
+	<!-- Defines the AngularJS app and initializes the variables -->
+	<div data-ng-app="" data-ng-init="sampletext='Lorem ipsum'; x=5; y=4; z=3" >
+		<!-- Binds the input control to the variable "sampletext" -->
+		<p>Sample text: <input type="text" data-ng-model="sampletext"></p>
+		<p>x: <input type="text" data-ng-model="x"></p>
+		<p>y: <input type="text" data-ng-model="y"></p>
+		<p>z: <input type="text" data-ng-model="z"></p>		
+		<!-- Binds the innerHTML of the paragraph element to the variables -->
+		<p data-ng-bind="sampletext"></p>
+		<p>Result = <span data-ng-bind="{{ (x + y) * z }}"></span></p>
+		<!-- AngularJS expressions bind data to HTML the same way as the ng-bind directive -->
+		<p>variable value: {{ sampletext }}</p>
+		<p>({{x}} + {{y}}) * {{z}} = {{ (x + y) * z }}</p>
+	</div>
+</body>
+</html>

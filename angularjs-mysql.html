@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.2.26/angular.min.js"></script>
+	<script>
+		function customersController($scope,$http) {
+			var site = "http://localhost";
+			var page = "/training/webdata.php";
+			$http.get(site + page)
+			.success(function(data) {$scope.names = data;});
+		}
+	</script>
+
+	<link href="angularjs-jsondata.css" rel="stylesheet" type="text/css">
+</head>
+
+<body>
+	<h1>JSON data fetch from MySQL</h1>
+	<div ng-app="" ng-controller="customersController"> 
+
+		<table>
+			<tr>
+				<th>Név</th>
+				<th>Város</th>
+				<th>Ország</th>
+				<th>Részvények</th>
+			</tr>			
+			<tr ng-repeat="x in names">
+				<td>{{ x.Name }}</td>
+				<td>{{ x.City }}</td>
+				<td>{{ x.Country }}</td>
+				<td>{{ x.Shares }}</td>
+			</tr>
+		</table>
+		<pre>raw data = {{ names | json : 4 }}</pre>
+	</div>
+</body>
+</html>

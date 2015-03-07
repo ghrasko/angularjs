@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.2.26/angular.min.js"></script>
+</head>
+
+<body>
+	<div ng-app="" ng-init="names=[
+		{familyName:'Csombó',givenName:'Szilvia'},
+		{familyName:'Hraskó',givenName:'Nóra'},
+		{familyName:'Hraskó',givenName:'Eszter'},
+		{familyName:'Hraskó',givenName:'Gábor'}]">
+	  <ul>
+		<li ng-repeat="x in names">
+		  {{ x.familyName + ' ' + x.givenName }}
+		</li>
+	  </ul>
+	</div>
+</body>
+</html>

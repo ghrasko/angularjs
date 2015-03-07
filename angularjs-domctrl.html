@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.2.26/angular.min.js"></script>
+	<script>
+		function customersController($scope,$http) {
+			$scope.count = 0;
+			$scope.increment = function() {
+				$scope.count++;
+			};			
+		}
+	</script>
+</head>
+
+<body>
+	<h1>DOM control</h1>
+	<div ng-app="" ng-init="mySwitch=true" ng-controller="customersController"> 
+<!--		<p><button ng-disabled="!mySwitch" ng-click="count = count + 1">Click Me!</button></p> -->
+		<p><button ng-disabled="!mySwitch" ng-click="increment()">Click Me!</button></p>
+		<p><input type="checkbox" ng-model="mySwitch">Enable the button = {{ mySwitch ? 'ENABLED' : 'DISABLED' }}</p>
+		<p ng-show="mySwitch">Number of clicks so far = {{ count }}</p>
+	</div>
+</body>
+</html>
